@@ -30,10 +30,11 @@
     },
     "extra": {
         "terminus": {
-            "compatible-version": "^1||^2||^3"
+            "compatible-version": "^3"
         }
     },
     "require": {
-        "consolidation/robo": "^3.0"
+        "consolidation/robo": "^3.0",
+        "pantheon-systems/terminus-build-tools-plugin": "3.x-dev"
     }
 }
