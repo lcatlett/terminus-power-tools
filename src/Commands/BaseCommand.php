@@ -56,19 +56,6 @@ class BaseCommand extends ProjectCreateCommand {
         $commandData->input()->setOption('stability', 'dev');
 
         $options_after = $commandData->input()->getOptions();
-        //print_r($options_after);
-    }
-
-
-    /**
-     * Configures Lando local development environment.
-     * @authorize
-     *
-     * @hook post-process build:project:create
-     */
-    public function taskInit()
-    {
-        $this->landoSetup();
     }
 
     /**
@@ -132,8 +119,6 @@ class BaseCommand extends ProjectCreateCommand {
             $this->log()->notice('Success! Lando configuration was generated and committed to the local repository. Start lando with "lando start"');
         }
 
-        //$this->log()->notice('Success2! Lando configuration was generated.');
-       // $this->log()->notice('Success3! Start lando with "lando start"');
     }
 
     /**
@@ -157,62 +142,5 @@ class BaseCommand extends ProjectCreateCommand {
         $this->log()->notice('Enabling New Relic on Pantheon site.');
         passthru("terminus new-relic:enable $site_name --no-interaction");
     }
-
-    /**
-     * Drupal settings - redis, etc once enabled.
-     */
-
-    // Check if enabled - module and on Pantheon
-
-    // Settings includes
-
-    // Truncate cache tables on environments?
-
-
-    /**
-     * Drupal settings - redis, etc once enabled.
-     */
-
-    // Sync quicksilver hooks for drupal into codebase.
-
-    // Add to pantheon.yml
-
-
-    /**
-     * Standardized git hooks
-     */
-
-
-
-    /**
-     * Code quality checks/static analysis moved out of composer.json
-     */
-
-    // Lint
-
-    // phpcs
-
-    // phpcsfixer
-
-
-    /**
-     * Prepare for pantheon moved into robo commands
-     */
-
-
-    /**
-     * Asset/frontend build scripts moved into robo commands.
-     */
-
-
-
-    /**
-     * Drupal security checkes moved into robo commands.
-     */
-
-
-
-
-
 
 }
