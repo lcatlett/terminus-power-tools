@@ -94,6 +94,14 @@ class BaseCommand extends ProjectCreateCommand {
                 ->to($site_name)
                 ->run();
 
+            $siteInfo = $this->getSite($site_name)->serialize();
+            $site_uuid = $siteInfo['id'];
+
+            $result = $this->taskReplaceInFile('.lando.yml')
+                ->from('%SITE_UUID%')
+                ->to($site_uuid)
+                ->run();
+
             if (!$result->wasSuccessful()) {
                 $this->log()->notice('Error: Unable to generate config for .lando.yml');
                 return;
